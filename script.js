@@ -704,35 +704,36 @@ function startGame10() {
   document.getElementById("game-instruction").innerText =
     "Apa lawan kata atau kebalikan dari situasi di bawah?";
 
+  // PERBAIKAN: Pisahkan simbol emoji dengan teks jawaban utamanya agar validasi 100% cocok
   const questions = [
     {
       kata: "☀️ SIANG (Terang)",
-      jawaban: "🌧️ MALAM (Gelap)",
-      opsi: ["🔥 PANAS", "🌧️ MALAM (Gelap)", "❄️ DINGIN"],
+      jawaban: "MALAM",
+      opsi: ["🔥 PANAS", "🌧️ MALAM", "❄️ DINGIN"],
     },
     {
       kata: "🔥 PANAS",
-      jawaban: "❄️ DINGIN",
+      jawaban: "DINGIN",
       opsi: ["❄️ DINGIN", "☀️ TERANG", "☁️ BERAWAN"],
     },
     {
       kata: "🐘 BESAR",
-      jawaban: "🐭 KECIL",
+      jawaban: "KECIL",
       opsi: ["🦒 TINGGI", "🦁 BERANI", "🐭 KECIL"],
     },
     {
       kata: "🥶 DINGIN",
-      jawaban: "🔥 PANAS",
+      jawaban: "PANAS",
       opsi: ["🌧️ BASAH", "🔥 PANAS", "☀️ TERANG"],
     },
     {
       kata: "🐢 LAMBAT",
-      jawaban: "🚀 CEPAT",
+      jawaban: "CEPAT",
       opsi: ["🚀 CEPAT", "💤 TIDUR", "📦 DIAM"],
     },
     {
       kata: "😀 SENANG",
-      jawaban: "😢 SEDIH",
+      jawaban: "SEDIH",
       opsi: ["😡 MARAH", "😎 KEREN", "😢 SEDIH"],
     },
   ];
@@ -743,7 +744,13 @@ function startGame10() {
     <div class="text-sm font-bold text-slate-400 mb-1 uppercase tracking-wider">Lawan kata dari:</div>
     <div class="text-3xl font-bubble font-black text-rose-500 bg-pink-50 border-2 border-pink-200 px-6 py-2 rounded-2xl mb-6 inline-block">${q.kata}</div>
     <div class="grid grid-cols-1 gap-3 w-full max-w-xs">
-        ${q.opsi.map((opt) => `<button onclick="checkAnswer('${opt}', '${q.jawaban}', 10)" class="py-3 bg-white border-2 border-pink-200 hover:bg-pink-500 hover:text-white font-bubble text-lg font-bold rounded-2xl transition shadow-sm">${opt}</button>`).join("")}
+        ${q.opsi
+          .map((opt) => {
+            // Mengambil teks asli tanpa emoji untuk dikirim ke fungsi checkAnswer
+            const teksMurni = opt.replace(/[^\w\s]/g, "").trim();
+            return `<button onclick="checkAnswer('${teksMurni}', '${q.jawaban}', 10)" class="py-3 bg-white border-2 border-pink-200 hover:bg-pink-500 hover:text-white font-bubble text-lg font-bold rounded-2xl transition shadow-sm">${opt}</button>`;
+          })
+          .join("")}
     </div>
   `;
 }
