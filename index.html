@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brain Games Series - Anak Pintar, Bermain Cerdas!</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Quicksand:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="bg-gradient-to-b from-indigo-200 via-purple-100 to-pink-200 min-h-screen p-4 flex flex-col items-center justify-start relative overflow-x-hidden"
+  >
+    <!-- CANVAS CONFETTI -->
+    <canvas
+      id="confetti-canvas"
+      class="absolute inset-0 w-full h-full pointer-events-none z-50"
+    ></canvas>
+
+    <!-- HEADER UTAMA -->
+    <header
+      class="w-full max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4 my-4 z-10"
+    >
+      <div
+        class="bg-white/90 px-6 py-2 rounded-full border-4 border-purple-400 shadow-md"
+      >
+        <span class="font-bubble text-xl text-indigo-900"
+          >⭐ Bintangku:
+          <span id="total-stars" class="text-amber-500 font-black"
+            >0</span
+          ></span
+        >
+      </div>
+      <div class="text-center">
+        <h1
+          class="text-4xl sm:text-5xl font-bubble font-black text-purple-600 drop-shadow-md"
+        >
+          BRAIN GAMES SERIES
+        </h1>
+        <p
+          class="bg-pink-500 text-white font-bubble text-xs sm:text-sm px-6 py-1 rounded-full inline-block mt-1 shadow border-b-2 border-pink-700"
+        >
+          20 Koleksi Game Edukasi Pengasah Otak Anak
+        </p>
+      </div>
+      <div class="w-24"></div>
+      <!-- Spacer penyeimbang -->
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="w-full max-w-6xl z-10">
+      <!-- SCREEN 1: DASHBOARD UTAMA (DAFTAR 20 GAME) -->
+      <div
+        id="screen-dashboard"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 animate-fadeIn"
+      >
+        <!-- Game cards akan di-render otomatis oleh JS sebanyak 20 game -->
+      </div>
+
+      <!-- SCREEN 2: ARENA BERMAIN GAME -->
+      <div
+        id="screen-arena"
+        class="hidden bg-white/95 rounded-3xl border-6 border-purple-400 p-6 shadow-2xl max-w-2xl mx-auto text-center relative animate-fadeIn"
+      >
+        <!-- Tombol Kembali -->
+        <button
+          onclick="backToDashboard()"
+          class="absolute top-4 left-4 w-10 h-10 bg-amber-400 border-2 border-white rounded-full flex items-center justify-center text-white font-bold shadow hover:scale-110 active:scale-95 transition"
+        >
+          🔙
+        </button>
+
+        <h2
+          id="game-title"
+          class="text-2xl sm:text-3xl font-bubble font-black text-indigo-900 mt-4 mb-1"
+        >
+          Nama Game
+        </h2>
+        <p id="game-instruction" class="text-sm text-slate-500 font-bold mb-6">
+          Instruksi bermain...
+        </p>
+
+        <!-- AREA KONTEN DINAMIS GAME -->
+        <div
+          id="game-content-area"
+          class="min-h-[250px] flex flex-col items-center justify-center my-4"
+        >
+          <!-- Konten game spesifik dimasukkan lewat JavaScript -->
+        </div>
+      </div>
+    </main>
+
+    <!-- CUSTOM POPUP ALERT -->
+    <div
+      id="alert-modal"
+      class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+    >
+      <div
+        class="bg-white rounded-3xl p-6 border-4 border-amber-400 text-center max-w-sm w-full space-y-4 shadow-2xl"
+      >
+        <div id="alert-emoji" class="text-5xl">🎉</div>
+        <h3
+          id="alert-title"
+          class="text-2xl font-bubble font-black text-indigo-900"
+        >
+          Hebat!
+        </h3>
+        <p id="alert-body" class="text-slate-600 font-bold text-sm">
+          Kamu berhasil menjawab!
+        </p>
+        <button
+          onclick="closeAlert()"
+          class="px-8 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bubble font-bold rounded-xl border-b-4 border-emerald-700 shadow transition"
+        >
+          OKE! 🥰
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
